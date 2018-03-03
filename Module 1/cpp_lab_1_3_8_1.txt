@@ -1,0 +1,37 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main()
+{
+	vector<int> v1;
+	vector<int> v2;
+	int n;
+	cin >> n;
+	if ( n <= 0) return 0;
+	else if ( n % 2 == 1) n++;
+
+	for (int i = 1; i <= n ; ++i) {
+	    if ( i % 2 == 0 ) v2.push_back(i);
+	    else  v1.push_back(i);
+	}
+
+    for (auto it1 = v1.begin(); it1 != v1.end(); ++it1)
+	{
+		for (auto it2 = v2.begin(); it2 != v2.end(); ++it2)
+		{
+			cout << *it1 + *it2 << " ";
+		}
+	}
+
+	for (vector<int>::reverse_iterator it1 = v1.rbegin(); it1 != v1.rend(); ++it1)
+	{
+		for (vector<int>::reverse_iterator it2 = v2.rbegin(); it2 != v2.rend(); ++it2)
+		{
+			cout << *it1 + *it2 << " ";
+		}
+	}
+
+	return 0;
+}

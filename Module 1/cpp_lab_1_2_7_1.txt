@@ -1,0 +1,55 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+class Banknote {
+  int n; // nominal
+  int q; // quantity
+
+public:
+  Banknote ( int n, int q) {
+    this->n = n;
+    this->q = q;
+  }
+  Banknote();
+
+  int getSum () {
+  	return n * q;
+  }
+};
+
+//=========================================================================
+
+int main()
+{
+  vector<Banknote> banknotes {Banknote(10,5), Banknote(20,6), Banknote(50,3), Banknote(100,4), Banknote(200,5)};
+  int a1, a2;
+  cin >> a1 >> a2;
+
+  if ( (a1 % 10 !=0) || (a2 % 10 !=0) ) {
+  	cout << "Incorrect amount of money. - i.e., if the amount is not a multiple of ten" << endl;
+  }
+  else {
+  	int sum;
+  	for ( auto banknote:banknotes ) {
+  		sum+=banknote.getSum();
+	}
+
+	if ( sum > a1 ) {
+		cout << "Enough money." << endl;
+		sum -= a1;
+
+		if ( sum > a2 ) {
+		cout << "Enough money." << endl;
+		sum -= a2;
+		}
+		else cout << " Not enough money. ";
+	}
+	else cout << " Not enough money. ";
+  }
+
+	return 0;
+}
