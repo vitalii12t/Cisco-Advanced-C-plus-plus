@@ -1,0 +1,27 @@
+#include <iostream>
+#include <map>
+#include <string>
+using namespace std;
+int main()
+{
+    map<string, int> results = { {"Sarah", 15 }, {"John", 12 }, {"Bart", 17} };
+
+    for (auto res : results) {
+        cout << res.first << "`s result is : " << res.second << endl;
+    }
+    cout << endl;
+
+    map<string, int>::iterator it = results.find("Bart");
+    results.erase(it);
+    for (auto res : results) {
+        cout << res.first << "`s result is : " << res.second << endl;
+    }
+    cout << endl;
+
+    results.insert({"Bob", 16});
+    for (auto res : results) {
+        cout << res.first << "`s result is : " << res.second << endl;
+    }
+
+    return 0;
+}

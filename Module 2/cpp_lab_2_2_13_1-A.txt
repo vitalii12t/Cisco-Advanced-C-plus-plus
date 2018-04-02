@@ -1,0 +1,36 @@
+#include <iostream>
+#include <set>
+#include <functional>
+using namespace std;
+
+bool countAppearence (set <double, greater<double>> a, double number) {
+    bool flag = false;
+    for ( set <double, greater<double>>::iterator it = a.begin(); it!=a.end(); ++it ) {
+        if ( *it == number ) {
+            while (it!=a.end()) {
+                cout << *it << "   ";
+                ++it;
+                flag = true;
+            }
+        }
+        if (flag) break;
+    }
+    return flag;
+}
+
+int main() {
+    set <double, greater<double>> valuesA = { -1.1, 2.9, -2.3, 2.71 }; // 2.9, 2.71, -1.1, -2.3
+    set <double, greater<double>> valuesB = { -3.14, 2.71, -3.88, 2.19 };//2.71, 2.19, -3.14, -3.88
+    double value;
+    cin >> value;
+
+    if (!countAppearence( valuesA, value)) {
+        cout << "Not found" << endl;
+    }
+    //cout << endl;
+    if (!countAppearence( valuesB, value)) {
+        cout << "Not found" << endl;
+    }
+
+    return 0;
+}

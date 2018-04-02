@@ -1,0 +1,43 @@
+#include <iostream>
+#include <set>
+using namespace std;
+
+double sumator (multiset <double> a, double start, double end) {
+    bool flag = false, flag2 = false; // flag2 will control if the stop value was found
+    double sum = 0.0;
+    for (multiset <double>::iterator it = a.begin(); it!=a.end(); ++it ) {
+        if (*it == start) {
+            sum = *it;
+            do {
+                ++it;
+                sum += *it;
+                flag = true;
+                if(*it == end) flag2 = true;
+                if (it == a.end()) break;
+            }
+            while ( *it != end );
+        }
+        if (flag) break;
+    }
+    cout << endl;
+    if (flag2) return sum;
+    else return 0;
+}
+
+int main() {
+    multiset <double> valuesA = { 1.1, 2.3, 2.7, 2.9, 3.5 };
+    multiset <double> valuesB = { 2.5, 2.7, 3.14, 3.5, 3.5, 4.5 };
+    double start_value, stop_value;
+    cin >> start_value;
+    cin >> stop_value;
+
+    double result = sumator(valuesA, start_value, stop_value);
+    if (result) cout << result;
+    else cout << "Not found";
+
+    result = sumator(valuesB, start_value, stop_value);
+    if (result) cout << result;
+    else cout << "Not found";
+
+    return 0;
+}
